@@ -18,8 +18,8 @@ fn sum(slice: &[i32]) -> i32 {
 }
 
 #[test]
-fn sum_test(){
-    assert_eq!(sum(&[1,2,3]), 6);
+fn sum_test() {
+    assert_eq!(sum(&[1, 2, 3]), 6);
 }
 
 // Problem 2.
@@ -36,16 +36,16 @@ fn unique(vs: &Vec<i32>) -> Vec<i32> {
     return uniq;
 }
 #[test]
-fn unique_test(){
-    let vec = vec![0;5];
+fn unique_test() {
+    let vec = vec![0; 5];
     assert_eq!(unique(&vec), vec![0])
 }
 
 // Problem 3.
 // return a new vector containing only elements that satisfy `pred`.
-fn filter(vs: & Vec<i32>, pred: &dyn Fn(i32) -> bool) -> Vec<i32> {
+fn filter(vs: &Vec<i32>, pred: &dyn Fn(i32) -> bool) -> Vec<i32> {
     let mut filtered: Vec<i32> = Vec::new();
-    for elem in vs.iter() {
+    for elem in vs {
         let response = pred(*elem);
         if response {
             filtered.push(*elem);
@@ -55,17 +55,29 @@ fn filter(vs: & Vec<i32>, pred: &dyn Fn(i32) -> bool) -> Vec<i32> {
 }
 
 #[test]
-fn filter_tests(){
-    assert_eq!(filter(& vec![1, 2, 3, 4, 5, 6], & |n| n % 2 == 0),
-              vec![2, 4, 6]);
+fn filter_tests() {
+    assert_eq!(
+        filter(&vec![1, 2, 3, 4, 5, 6], &|n| n % 2 == 0),
+        vec![2, 4, 6]
+    );
 }
-
 
 // Problem 4
 // Given starting fibonacci numbers n1 and n2, compute a vector
 // where v[i] is the ith fibonacci number.
 fn fibonacci(n1: i32, n2: i32, how_many: usize) -> Vec<i32> {
-    unimplemented!()
+    let mut fib: Vec<i32> = Vec::new();
+    fib.push(n1);
+    fib.push(n2);
+    for index in 2..how_many {
+        fib.push(fib[index - 1] + fib[index - 2]);
+    }
+    return fib;
+}
+
+#[test]
+fn fibonacci_tests() {
+    assert_eq!(fibonacci(0, 1, 4), vec![0, 1, 1, 2]);
 }
 
 // Problem 5
