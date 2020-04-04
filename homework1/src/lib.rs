@@ -14,7 +14,6 @@ fn sum(slice: &[i32]) -> i32 {
     for element in slice {
         count = count + element;
     }
-    println! ("HERE NIGGA! {}", count);
     return count;
 }
 
@@ -28,7 +27,18 @@ fn sum_test(){
 // only once! Much like a set would.
 // Please implement this using a for loop.
 fn unique(vs: &Vec<i32>) -> Vec<i32> {
-    unimplemented!()
+    let mut uniq: Vec<i32> = Vec::new();
+    for elem in vs.iter() {
+        if !uniq.contains(elem) {
+            uniq.push(*elem);
+        }
+    }
+    return uniq;
+}
+#[test]
+fn unique_test(){
+    let vec = vec![0;5];
+    assert_eq!(unique(&vec), vec![0])
 }
 
 // Problem 3.
