@@ -44,14 +44,21 @@ fn unique_test(){
 // Problem 3.
 // return a new vector containing only elements that satisfy `pred`.
 fn filter(vs: & Vec<i32>, pred: &dyn Fn(i32) -> bool) -> Vec<i32> {
-    unimplemented!()
+    let mut filtered: Vec<i32> = Vec::new();
+    for elem in vs.iter() {
+        let response = pred(*elem);
+        if response {
+            filtered.push(*elem);
+        }
+    }
+    return filtered;
 }
 
-//#[test]
-//fn filter_tests(){
-//    assert_eq!(filter(& vec![1, 2, 3, 4, 5, 6], & |n| n % 2 == 0),
-//              vec![2, 4, 6]);
-//}
+#[test]
+fn filter_tests(){
+    assert_eq!(filter(& vec![1, 2, 3, 4, 5, 6], & |n| n % 2 == 0),
+              vec![2, 4, 6]);
+}
 
 
 // Problem 4
