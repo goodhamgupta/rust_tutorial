@@ -102,7 +102,8 @@ fn print_contents_of_file(path: &str) -> String {
 
 #[test]
 fn print_contents_of_file_tests() {
-    let response = print_contents_of_file(&"/home/goodhamgupta/shubham/rust_tutorial/homework1/src/test.txt");
+    let response =
+        print_contents_of_file(&"/home/goodhamgupta/shubham/rust_tutorial/homework1/src/test.txt");
     assert_eq!(response, "dummy");
 }
 
@@ -111,16 +112,17 @@ fn print_contents_of_file_tests() {
 //// Fix by changing the type signature of add1 and the way it's called on add1_test().
 //// do NOT change the return type.
 //
-//#[test]
-//fn add1_test() {
-//    let mut x = 1;
-//    add1(x);
-//    assert_eq!(x, 2);
-//}
-//
-//fn add1(mut x : i32) -> () {
-//    x += 1;
-//}
+
+fn add1(x : &mut i32) -> () {
+    *x += 1;
+}
+
+#[test]
+fn add1_test() {
+    let mut x = 1;
+    add1(&mut x);
+    assert_eq!(x, 2);
+}
 //
 //// Problem 5.
 //// Error says: cannot assign to immutable borrowed content `*str1`
