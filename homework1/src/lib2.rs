@@ -39,20 +39,36 @@ fn split_clone_tests() {
     assert_eq!(split_clone("Hello World!"), &["Hello", "World!"]);
     assert_eq!(split_clone("Hello World!"), vec!["Hello", "World!"]);
 }
+
+// Problem 2.
+// Write function pick_longest which picks the longests of two string-ish
+// objects. Please make the function as general as possible (i.e do not
+// take "String" as a parameter).
 //
-//// Problem 2.
-//// Write function pick_longest which picks the longests of two string-ish
-//// objects. Please make the function as general as possible (i.e do not
-//// take "String" as a parameter).
-////
-//// From simplicity return a new String, later we will learn how to return
-//// references. Write additional tests.
-////
+// From simplicity return a new String, later we will learn how to return
+// references. Write additional tests.
 //
-//// #[test]
-//// fn pick_longest_tests() {
-////     assert_eq!(pick_longest(& "cat".to_string(), & "dog".to_string()), "cat");
-//// }
+fn pick_longest<T: ToString>(first: T, second: T) -> String {
+    let first_str = first.to_string();
+    let second_str = second.to_string();
+    if first_str.len() >= second_str.len() {
+        return String::from(first_str);
+    } else {
+        return String::from(second_str);
+    }
+}
+
+#[test]
+fn pick_longest_tests() {
+    assert_eq!(pick_longest(&"cat".to_string(), &"dog".to_string()), "cat");
+}
+#[test]
+fn pick_longest_numbers_tests() {
+    assert_eq!(
+        pick_longest(&"1234".to_string(), &"123".to_string()),
+        "1234"
+    );
+}
 //
 //
 //// Question 1:
