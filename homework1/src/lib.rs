@@ -88,7 +88,7 @@ fn str_concat(s1: &str, s2: &str) -> String {
     return response;
 }
 #[test]
-fn test_str_concat(){
+fn str_concat_tests(){
     let first = "hello";
     let second= "world";
     assert_eq!(str_concat(&first, &second), "helloworld");
@@ -100,7 +100,7 @@ fn string_concat(s1: &String, s2: &String) -> String {
     let response = s1.to_owned() + s2;
     return response.to_string();
 }
-fn test_string_concat(){
+fn string_concat_tests(){
     let first = String::from("hello");
     let second= String::from("world");
     assert_eq!(string_concat(&first, &second), "helloworld");
@@ -122,7 +122,7 @@ fn concat_all(v: Vec<String>) -> Vec<u64> {
 }
 
 #[test]
-fn test_concat_all(){
+fn concat_all_tests(){
     let str_vec = vec![String::from("1"),String::from("2")];
     assert_eq!(concat_all(str_vec), vec![1,2])
 }
@@ -135,7 +135,7 @@ fn concat_all_with_map(v: Vec<String>) -> Vec<u64> {
     return response;
 }
 #[test]
-fn test_concat_all_with_map(){
+fn concat_all_with_map_tests(){
     let str_vec = vec![String::from("8"),String::from("9")];
     assert_eq!(concat_all(str_vec), vec![8,9])
 }
