@@ -62,6 +62,7 @@ fn pick_longest<T: ToString>(first: T, second: T) -> String {
 fn pick_longest_tests() {
     assert_eq!(pick_longest(&"cat".to_string(), &"dog".to_string()), "cat");
 }
+
 #[test]
 fn pick_longest_numbers_tests() {
     assert_eq!(
@@ -69,31 +70,42 @@ fn pick_longest_numbers_tests() {
         "1234"
     );
 }
+
+// Question 1:
+//For the curious, attempt to return reference, that is:
 //
+// fn pick_longest(???) -> &str
 //
-//// Question 1:
-////For the curious, attempt to return reference, that is:
-////
-//// fn pick_longest(???) -> &str
-////
-//// What goes wrong when you try to implement this function? Why is this
-//// the case?
-//
-//
-//// Problem 3.
-//// Write a function that returns all the contents of a file as a single String.
-//
-//// DO NOT USE the assocated function std::fs::read_to_string
-//
-//// Instead use File::open, and the method read_to_string
-//// (https://doc.rust-lang.org/std/io/trait.Read.html#method.read_to_string)
-//
+// What goes wrong when you try to implement this function? Why is this
+// the case?
+// For a function to return a variable with reference, it must include the lifetime for the
+// reference. Since the function does not take any parameter by reference, lifetime elision does
+// not occur automatically.
+
+// Problem 3.
+// Write a function that returns all the contents of a file as a single String.
+
+// DO NOT USE the assocated function std::fs::read_to_string
+
+// Instead use File::open, and the method read_to_string
+// (https://doc.rust-lang.org/std/io/trait.Read.html#method.read_to_string)
+
 //// Use .expect("ignoring error: ") to ignore the Result<...> type in open() and
 //// read_to_string. We learn error handling later.
-//fn print_contents_of_file(path : &str) -> String {
-//    unimplemented!()
-//}
-//
+fn print_contents_of_file(path: &str) -> String {
+    let mut f = File::open(path).expect("ignoring error: ");
+    let mut buffer = String::new();
+
+    f.read_to_string(&mut buffer);
+    return buffer.trim().to_string();
+}
+
+#[test]
+fn print_contents_of_file_tests() {
+    let response = print_contents_of_file(&"/home/goodhamgupta/shubham/rust_tutorial/homework1/src/test.txt");
+    assert_eq!(response, "dummy");
+}
+
 //// Problem 4.
 //// Why does the following implementation not work as expected?
 //// Fix by changing the type signature of add1 and the way it's called on add1_test().
