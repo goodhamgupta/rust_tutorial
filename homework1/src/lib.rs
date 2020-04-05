@@ -113,7 +113,18 @@ fn test_string_concat(){
 // See https://doc.rust-lang.org/std/primitive.str.html#method.parse
 // Use turbo fish! Do not use type inference for parse()
 fn concat_all(v: Vec<String>) -> Vec<u64> {
-    unimplemented!()
+    let mut numbers: Vec<u64> = Vec::new();
+    for num in v.iter() {
+        let parsed = num.parse().unwrap();
+        numbers.push(parsed);
+    }
+    return numbers;
+}
+
+#[test]
+fn test_concat_all(){
+    let str_vec = vec![String::from("1"),String::from("2")];
+    assert_eq!(concat_all(str_vec), vec![1,2])
 }
 
 // Implement concat_all using map, parse (with turbo fish), and collect()
