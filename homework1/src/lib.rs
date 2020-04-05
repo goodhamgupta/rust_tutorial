@@ -97,7 +97,13 @@ fn test_str_concat(){
 // Create a function which concats 2 string and returns a String.
 // You may use any standard library function you wish.
 fn string_concat(s1: &String, s2: &String) -> String {
-    unimplemented!()
+    let response = s1.to_owned() + s2;
+    return response.to_string();
+}
+fn test_string_concat(){
+    let first = String::from("hello");
+    let second= String::from("world");
+    assert_eq!(string_concat(&first, &second), "helloworld");
 }
 
 // Problem 7
