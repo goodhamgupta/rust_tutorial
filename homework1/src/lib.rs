@@ -131,5 +131,11 @@ fn test_concat_all(){
 // Check out how the lecture does something similar:
 // https://github.com/upenn-cis198/lecture2/blob/f54753527c1dabbd5e55c2f48a19745768769beb/src/lib.rs#L362
 fn concat_all_with_map(v: Vec<String>) -> Vec<u64> {
-    unimplemented!()
+    let response = v.into_iter().map(|elem| elem.parse().unwrap()).collect::<Vec<u64>>();
+    return response;
+}
+#[test]
+fn test_concat_all_with_map(){
+    let str_vec = vec![String::from("8"),String::from("9")];
+    assert_eq!(concat_all(str_vec), vec![8,9])
 }
