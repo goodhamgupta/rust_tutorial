@@ -127,11 +127,11 @@ fn add1_test() {
 //// Problem 5.
 //// Error says: cannot assign to immutable borrowed content `*str1`
 //// But we declared it mutable? Fix by changing only the line below.
-//// fn mut2() {
-////     let hello = String::from("hello");
-//
-////     // CHANGE ONLY THIS LINE:
-////     let mut str1: & String = & String::from("str1");
-//
-////     *str1 = hello;
-//// }
+fn mut2() {
+    let hello = String::from("hello");
+
+    // CHANGE ONLY THIS LINE:
+    let str1: &mut String = &mut String::from("str1");
+
+    *str1 = hello;
+}
