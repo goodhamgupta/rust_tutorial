@@ -1,7 +1,7 @@
 #![allow(dead_code)]
 
 // Uncomment these to have Rust compile the other files as well.
-// mod lib2;
+mod lib2;
 // mod lib3;
 
 // Part 1. Implementing Functions. Taken from Fall 2016's Rust class.
@@ -77,7 +77,7 @@ fn fibonacci(n1: i32, n2: i32, how_many: usize) -> Vec<i32> {
 
 #[test]
 fn fibonacci_tests() {
-    assert_eq!(fibonacci(0,1, 4), vec![0, 1, 1, 2]);
+    assert_eq!(fibonacci(0, 1, 4), vec![0, 1, 1, 2]);
 }
 
 // Problem 5
@@ -88,9 +88,9 @@ fn str_concat(s1: &str, s2: &str) -> String {
     return response;
 }
 #[test]
-fn str_concat_tests(){
+fn str_concat_tests() {
     let first = "hello";
-    let second= "world";
+    let second = "world";
     assert_eq!(str_concat(&first, &second), "helloworld");
 }
 // Problem 6
@@ -100,9 +100,9 @@ fn string_concat(s1: &String, s2: &String) -> String {
     let response = s1.to_owned() + s2;
     return response.to_string();
 }
-fn string_concat_tests(){
+fn string_concat_tests() {
     let first = String::from("hello");
-    let second= String::from("world");
+    let second = String::from("world");
     assert_eq!(string_concat(&first, &second), "helloworld");
 }
 
@@ -122,20 +122,23 @@ fn concat_all(v: Vec<String>) -> Vec<u64> {
 }
 
 #[test]
-fn concat_all_tests(){
-    let str_vec = vec![String::from("1"),String::from("2")];
-    assert_eq!(concat_all(str_vec), vec![1,2])
+fn concat_all_tests() {
+    let str_vec = vec![String::from("1"), String::from("2")];
+    assert_eq!(concat_all(str_vec), vec![1, 2])
 }
 
 // Implement concat_all using map, parse (with turbo fish), and collect()
 // Check out how the lecture does something similar:
 // https://github.com/upenn-cis198/lecture2/blob/f54753527c1dabbd5e55c2f48a19745768769beb/src/lib.rs#L362
 fn concat_all_with_map(v: Vec<String>) -> Vec<u64> {
-    let response = v.into_iter().map(|elem| elem.parse().unwrap()).collect::<Vec<u64>>();
+    let response = v
+        .into_iter()
+        .map(|elem| elem.parse().unwrap())
+        .collect::<Vec<u64>>();
     return response;
 }
 #[test]
-fn concat_all_with_map_tests(){
-    let str_vec = vec![String::from("8"),String::from("9")];
-    assert_eq!(concat_all(str_vec), vec![8,9])
+fn concat_all_with_map_tests() {
+    let str_vec = vec![String::from("8"), String::from("9")];
+    assert_eq!(concat_all(str_vec), vec![8, 9])
 }
