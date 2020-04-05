@@ -77,16 +77,22 @@ fn fibonacci(n1: i32, n2: i32, how_many: usize) -> Vec<i32> {
 
 #[test]
 fn fibonacci_tests() {
-    assert_eq!(fibonacci(0, 1, 4), vec![0, 1, 1, 2]);
+    assert_eq!(fibonacci(0,1, 4), vec![0, 1, 1, 2]);
 }
 
 // Problem 5
 // Create a function which concats 2 strs and returns a String.
 // You may use any standard library function you wish.
 fn str_concat(s1: &str, s2: &str) -> String {
-    unimplemented!()
+    let response = format!("{}{}", s1, s2);
+    return response;
 }
-
+#[test]
+fn test_str_concat(){
+    let first = "hello";
+    let second= "world";
+    assert_eq!(str_concat(&first, &second), "helloworld");
+}
 // Problem 6
 // Create a function which concats 2 string and returns a String.
 // You may use any standard library function you wish.
