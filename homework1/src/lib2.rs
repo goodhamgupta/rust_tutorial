@@ -26,13 +26,19 @@ fn split_ref_tests() {
     assert_eq!(split_ref("Hello World!"), vec!["Hello", "World!"]);
 }
 
-//#[test]
-//fn split_clone_tests(){
-//    let string = "Hello World!".to_string();
-//    assert_eq!(split_clone(& string), ["Hello", "World!"]);
-//    assert_eq!(split_clone("Hello World!"), & ["Hello", "World!"]);
-//    assert_eq!(split_clone("Hello World!"), vec!["Hello", "World!"]);
-//}
+fn split_clone(v: &str) -> Vec<&str> {
+    let clone = v.clone();
+    let response = clone.split_whitespace().collect::<Vec<&str>>();
+    response
+}
+
+#[test]
+fn split_clone_tests() {
+    let string = "Hello World!".to_string();
+    assert_eq!(split_clone(&string), ["Hello", "World!"]);
+    assert_eq!(split_clone("Hello World!"), &["Hello", "World!"]);
+    assert_eq!(split_clone("Hello World!"), vec!["Hello", "World!"]);
+}
 //
 //// Problem 2.
 //// Write function pick_longest which picks the longests of two string-ish
